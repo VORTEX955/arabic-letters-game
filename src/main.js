@@ -6,7 +6,7 @@ const arabicLetters = [
   "ق", "ك", "ل", "م", "ن", "ه", "و", "ي"
 ];
 
-let showAnswers = false; // الحالة العامة التي تحدد ما إذا كانت الإجابات والتصنيفات مرئية أم لا
+let showAnswers = false; // تحديد الحالة العامة
 
 async function getData() {
   try {
@@ -55,20 +55,20 @@ function updateUI(question, answer, category) {
   const categoryElement = document.getElementById('category');
   categoryElement.innerText = category;
 
-  // **تحديد حالة العرض بناءً على وضع الزر**
-  answerElement.classList.toggle('hidden', !showAnswers);
-  categoryElement.classList.toggle('hidden', !showAnswers);
+  // **تطبيق حالة العرض بناءً على وضع الزر**
+  applyVisibility();
 
   // إظهار زر التحكم
   const toggleBtn = document.getElementById('toggle-answer');
   toggleBtn.classList.remove('hidden');
-  updateToggleIcon();
-
-  toggleBtn.onclick = toggleAnswerVisibility;
 }
 
 function toggleAnswerVisibility() {
-  showAnswers = !showAnswers; // تغيير الحالة العامة
+  showAnswers = !showAnswers; // تحديث الحالة العامة
+  applyVisibility();
+}
+
+function applyVisibility() {
   document.getElementById('answer').classList.toggle('hidden', !showAnswers);
   document.getElementById('category').classList.toggle('hidden', !showAnswers);
   updateToggleIcon();
@@ -78,5 +78,7 @@ function updateToggleIcon() {
   const toggleIcon = document.getElementById('toggle-icon');
   toggleIcon.src = showAnswers ? 'public/icons8-invisible-90.png' : 'public/icons8-eye-90.png';
 }
+
+document.getElementById('toggle-answer').addEventListener('click', toggleAnswerVisibility);
 
 getData();
