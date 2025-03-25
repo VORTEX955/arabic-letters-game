@@ -24,12 +24,10 @@ body {
   /* تعديل الشعار */
 #logo {
     position: absolute;
-    top: 10px; /* للتحريك للأعلى */
     left: 50%; /* للتوسيط */
     transform: translateX(-50%); /* للتوسيط التام */
-    width: 60px; /* زيادة حجم الشعار */
     height: auto; /* الحفاظ على النسب */
-    max-height: 60px;
+    max-height: 90px;
 }
 
 }
