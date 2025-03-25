@@ -1,55 +1,61 @@
+/* style.css */
 body {
-  font-family: Arial, sans-serif;
-  text-align: center;
-  background-color: #f4f4f4;
-  margin: 0;
-  padding: 20px;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 20px;
 }
 
 h1 {
-  color: #333;
+    font-size: 24px;
 }
 
 #letters {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
 }
 
 .letter-btn {
-  background-color: #007bff;
-  color: white;
-  border: none;
-  padding: 10px 15px;
-  font-size: 18px;
-  cursor: pointer;
-  border-radius: 5px;
-  transition: 0.3s;
+    padding: 15px;
+    font-size: 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
 
 .letter-btn:hover {
-  background-color: #0056b3;
+    background-color: #45a049;
 }
 
 #question-box {
-  margin-top: 20px;
-  padding: 15px;
-  background: white;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  display: inline-block;
-  text-align: center;
-  min-width: 300px;
+    margin-top: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    border-radius: 5px;
 }
 
-#question {
-  font-size: 20px;
-  font-weight: bold;
+/* تحسين العرض على الأجهزة المحمولة */
+@media screen and (max-width: 768px) {
+    .letter-btn {
+        font-size: 18px;
+        padding: 12px;
+    }
+
+    #letters {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+    }
 }
 
-#answer {
-  font-size: 18px;
-  color: green;
-  margin-top: 10px;
+@media screen and (max-width: 480px) {
+    .letter-btn {
+        font-size: 16px;
+        padding: 10px;
+    }
 }
