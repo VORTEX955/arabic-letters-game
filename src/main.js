@@ -6,6 +6,8 @@ const arabicLetters = [
   "ق", "ك", "ل", "م", "ن", "ه", "و", "ي"
 ];
 
+let showAnswers = false; // حالة عامة لتحديد عرض الإجابة
+
 async function getData() {
   try {
     const response = await fetch(sheetUrl);
@@ -45,28 +47,29 @@ function updateUI(question, answer, category) {
   document.getElementById('question').innerText = `❓ السؤال: ${question}`;
   document.getElementById('question').classList.remove('hidden');
 
-  document.getElementById('answer').innerText = "**********";
-  document.getElementById('answer').classList.add('hidden');
+  document.getElementById('answer').innerText = showAnswers ? answer : "**********";
+  document.getElementById('answer').classList.toggle('hidden', !showAnswers);
 
   document.getElementById('category').innerText = category;
   document.getElementById('category').classList.remove('hidden');
 
   const toggleBtn = document.getElementById('toggle-answer');
   toggleBtn.classList.remove('hidden');
-  toggleBtn.onclick = function () {
-    const answerElem = document.getElementById('answer');
-    const toggleIcon = document.getElementById('toggle-icon');
+  updateToggleIcon();
+  
+  toggleBtn.onclick = toggleAnswerVisibility;
+}
 
-    if (answerElem.classList.contains('hidden')) {
-      answerElem.classList.remove('hidden');
-      answerElem.innerText = answer;
-      toggleIcon.src = 'public/icons8-invisible-90.png';
-    } else {
-      answerElem.classList.add('hidden');
-      answerElem.innerText = "**********";
-      toggleIcon.src = 'public/icons8-eye-90.png';
-    }
-  };
+function toggleAnswerVisibility() {
+  showAnswers = !showAnswers; // تغيير الحالة العامة
+  document.getElementById('answer').innerText = showAnswers ? document.getElementById('answer').dataset.realAnswer : "**********";
+  document.getElementById('answer').classList.toggle('hidden', !showAnswers);
+  updateToggleIcon();
+}
+
+function updateToggleIcon() {
+  const toggleIcon = document.getElementById('toggle-icon');
+  toggleIcon.src = showAnswers ? 'public/icons8-invisible-90.png' : 'public/icons8-eye-90.png';
 }
 
 getData();
