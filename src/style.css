@@ -30,6 +30,7 @@ h1 {
   font-weight: 700;
 }
 
+/* منطقة الحروف */
 #letters {
   display: flex;
   flex-wrap: wrap;
@@ -53,13 +54,15 @@ h1 {
   background-color: #365f48;
 }
 
+/* قسم السؤال والإجابة */
 #question-box {
   background-color: #EFEFEF;
   color: #333;
   padding: 20px;
   border-radius: 5px;
-  text-align: left;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  direction: rtl;
+  text-align: right;
 }
 
 #question-box p {
@@ -82,8 +85,17 @@ h1 {
   margin-bottom: 5px;
 }
 
-.hidden {
-  display: none;
+/* زر التبديل لإخفاء/إظهار الإجابة */
+.toggle-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.toggle-btn img {
+  width: 30px;
+  height: 30px;
 }
 
 /* تحسين العرض على الأجهزة المحمولة */
