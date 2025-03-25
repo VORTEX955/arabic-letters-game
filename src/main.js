@@ -10,19 +10,8 @@ async function getData() {
   try {
     const response = await fetch(sheetUrl);
     const data = await response.json();
-    console.log("📊 البيانات المسترجعة:", data);
-
-    if (!Array.isArray(data) || data.length === 0) {
-      console.error("❌ لم يتم العثور على بيانات في الجدول!");
-      document.getElementById('question').innerText = "⚠️ لم يتم العثور على بيانات في الجدول!";
-      return;
-    }
 
     const lettersContainer = document.getElementById('letters');
-    if (!lettersContainer) {
-      console.error("❌ عنصر الأزرار 'letters' غير موجود في الـ HTML!");
-      return;
-    }
 
     arabicLetters.forEach(letter => {
       const button = document.createElement('button');
@@ -40,40 +29,42 @@ function showQuestion(letter, data) {
   const questions = data.filter(item => item["الحرف"]?.trim() === letter);
 
   if (questions.length === 0) {
-    document.getElementById('question').innerText = `❌ لا يوجد أسئلة لهذا الحرف "${letter}"!`;
-    document.getElementById('answer').innerText = "**********";
-    document.getElementById('category').innerText = "لا يوجد";
-    document.getElementById('toggle-answer').style.display = 'none';
+    updateUI("❌ لا يوجد أسئلة!", "**********", "لا يوجد تصنيف");
     return;
   }
 
   const randomQuestion = questions[Math.floor(Math.random() * questions.length)];
-  const questionText = randomQuestion["السؤال"] || "🚨 خطأ: العمود غير موجود!";
-  const answerText = randomQuestion["الأجابة"] || "🚨 خطأ: العمود غير موجود!";
-  const categoryText = randomQuestion["التصنيف"] || "";
+  const questionText = randomQuestion["السؤال"] || "🚨 خطأ: لا يوجد سؤال!";
+  const answerText = randomQuestion["الأجابة"] || "🚨 خطأ: لا يوجد إجابة!";
+  const categoryText = randomQuestion["التصنيف"] || "لا يوجد تصنيف";
 
-  document.getElementById('question').innerText = `❓ السؤال: ${questionText}`;
+  updateUI(questionText, answerText, categoryText);
+}
+
+function updateUI(question, answer, category) {
+  document.getElementById('question').innerText = `❓ السؤال: ${question}`;
+  document.getElementById('question').classList.remove('hidden');
+
   document.getElementById('answer').innerText = "**********";
-  document.getElementById('category').innerText = categoryText || "لا يوجد";
+  document.getElementById('answer').classList.add('hidden');
+
+  document.getElementById('category').innerText = category;
+  document.getElementById('category').classList.remove('hidden');
 
   const toggleBtn = document.getElementById('toggle-answer');
-  toggleBtn.style.display = 'inline-block';
-
-  // إخفاء الإجابة افتراضيًا
-  document.getElementById('answer').style.display = 'none';
-
+  toggleBtn.classList.remove('hidden');
   toggleBtn.onclick = function () {
     const answerElem = document.getElementById('answer');
     const toggleIcon = document.getElementById('toggle-icon');
-    
-    if (answerElem.style.display === 'none') {
-      answerElem.style.display = 'block';
-      answerElem.innerText = answerText;
-      toggleIcon.src = 'https://img.icons8.com/ios-filled/50/000000/eye.png';
+
+    if (answerElem.classList.contains('hidden')) {
+      answerElem.classList.remove('hidden');
+      answerElem.innerText = answer;
+      toggleIcon.src = 'public/icons8-invisible-90.png';
     } else {
-      answerElem.style.display = 'none';
+      answerElem.classList.add('hidden');
       answerElem.innerText = "**********";
-      toggleIcon.src = 'https://img.icons8.com/ios-filled/50/000000/closed-eye.png';
+      toggleIcon.src = 'public/icons8-eye-90.png';
     }
   };
 }
