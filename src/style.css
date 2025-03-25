@@ -46,7 +46,6 @@ h1 {
         font-size: 18px;
         padding: 12px;
     }
-
     #letters {
         grid-template-columns: repeat(4, 1fr);
         gap: 10px;
