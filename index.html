@@ -4,26 +4,39 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>لعبة الحروف</title>
-    <!-- تحديد Base URL للمشروع على GitHub Pages -->
+    <!-- تحديد Base URL لتناسب GitHub Pages -->
     <base href="/arabic-letters-game/" />
-    <!-- ربط ملف CSS من مجلد src -->
+    <!-- استدعاء خط Cairo من Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- ربط ملف CSS -->
     <link rel="stylesheet" href="src/style.css" />
   </head>
   <body>
     <div id="app">
-      <h1>🎲 لعبة الحروف</h1>
+      <!-- قسم الشعار -->
+      <header id="header">
+        <!-- ضع الشعار هنا، تأكد من تنزيل الشعار وحطه مثلاً في public/logo.png أو استخدم الرابط المباشر إن كان يعمل -->
+        <img id="logo" src="https://drive.google.com/uc?id=1tOIz4ackOmQEQ28GzsmLQrwFYKzwKtIE" alt="Logo" />
+        <h1>🎲 لعبة الحروف</h1>
+      </header>
       
       <!-- منطقة الأزرار -->
-      <div id="letters" style="margin-bottom: 20px;"></div>
+      <div id="letters"></div>
       
-      <!-- عرض السؤال والجواب -->
+      <!-- قسم عرض السؤال والأجابة والتصنيف -->
       <div id="question-box">
+        <p id="category" class="hidden"></p>
         <p id="question">اختر حرفًا لعرض السؤال...</p>
         <p id="answer"></p>
       </div>
     </div>
     
-    <!-- ربط ملف JS من مجلد src -->
+    <!-- ربط ملف JS -->
     <script type="module" src="src/main.js"></script>
   </body>
 </html>
