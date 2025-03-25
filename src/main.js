@@ -6,7 +6,7 @@ const arabicLetters = [
   "ق", "ك", "ل", "م", "ن", "ه", "و", "ي"
 ];
 
-let showAnswers = false; // حالة عامة لتحديد عرض الإجابة
+let showAnswers = false; // الحالة العامة التي تحدد ما إذا كانت الإجابات والتصنيفات مرئية أم لا
 
 async function getData() {
   try {
@@ -22,6 +22,7 @@ async function getData() {
       button.addEventListener('click', () => showQuestion(letter, data));
       lettersContainer.appendChild(button);
     });
+
   } catch (error) {
     console.error("❌ خطأ في جلب البيانات:", error);
   }
@@ -47,23 +48,29 @@ function updateUI(question, answer, category) {
   document.getElementById('question').innerText = `❓ السؤال: ${question}`;
   document.getElementById('question').classList.remove('hidden');
 
-  document.getElementById('answer').innerText = showAnswers ? answer : "**********";
-  document.getElementById('answer').classList.toggle('hidden', !showAnswers);
+  const answerElement = document.getElementById('answer');
+  answerElement.innerText = answer;
+  answerElement.dataset.realAnswer = answer;
 
-  document.getElementById('category').innerText = category;
-  document.getElementById('category').classList.remove('hidden');
+  const categoryElement = document.getElementById('category');
+  categoryElement.innerText = category;
 
+  // **تحديد حالة العرض بناءً على وضع الزر**
+  answerElement.classList.toggle('hidden', !showAnswers);
+  categoryElement.classList.toggle('hidden', !showAnswers);
+
+  // إظهار زر التحكم
   const toggleBtn = document.getElementById('toggle-answer');
   toggleBtn.classList.remove('hidden');
   updateToggleIcon();
-  
+
   toggleBtn.onclick = toggleAnswerVisibility;
 }
 
 function toggleAnswerVisibility() {
   showAnswers = !showAnswers; // تغيير الحالة العامة
-  document.getElementById('answer').innerText = showAnswers ? document.getElementById('answer').dataset.realAnswer : "**********";
   document.getElementById('answer').classList.toggle('hidden', !showAnswers);
+  document.getElementById('category').classList.toggle('hidden', !showAnswers);
   updateToggleIcon();
 }
 
