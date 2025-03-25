@@ -1,27 +1,29 @@
 <!DOCTYPE html>
 <html lang="ar">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>لعبة الحروف</title>
-    <base href="/arabic-letters-game/"> <!-- إضافة Base URL هنا -->
-    <link rel="stylesheet" href="/arabic-letters-game/src/style.css"> <!-- مسار الـ CSS مع مجلد src -->
-</head>
-<body>
-
+    <!-- تحديد قاعدة الروابط لتناسب GitHub Pages -->
+    <base href="/arabic-letters-game/" />
+    <!-- ربط ملف CSS من مجلد src -->
+    <link rel="stylesheet" href="src/style.css" />
+  </head>
+  <body>
     <div id="app">
-        <h1>🎲 لعبة الحروف</h1>
-        
-        <!-- منطقة الأزرار -->
-        <div id="letters" style="margin-bottom: 20px;"></div> 
-
-        <!-- عرض السؤال والجواب -->
-        <div id="question-box">
-            <p id="question">اختر حرفًا لعرض السؤال...</p>
-            <p id="answer"></p>
-        </div>
+      <h1>🎲 لعبة الحروف</h1>
+      
+      <!-- منطقة الأزرار -->
+      <div id="letters" style="margin-bottom: 20px;"></div>
+      
+      <!-- عرض السؤال والجواب -->
+      <div id="question-box">
+        <p id="question">اختر حرفًا لعرض السؤال...</p>
+        <p id="answer"></p>
+      </div>
     </div>
-
-    <script type="module" src="/arabic-letters-game/src/main.js"></script> <!-- مسار الـ JS مع مجلد src -->
-</body>
+    
+    <!-- ربط ملف JS من مجلد src -->
+    <script type="module" src="src/main.js"></script>
+  </body>
 </html>
