@@ -1,56 +1,102 @@
 /* src/style.css */
 body {
-    font-family: Arial, sans-serif;
-    text-align: center;
-    margin: 0;
-    padding: 20px;
+  font-family: 'Cairo', sans-serif;
+  background-color: #EF9651;
+  margin: 0;
+  padding: 20px;
+  color: #EFEFEF;
+}
+
+#app {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+#header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+#logo {
+  max-height: 60px;
 }
 
 h1 {
-    font-size: 24px;
+  font-size: 32px;
+  margin: 0;
+  font-weight: 700;
 }
 
 #letters {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
 }
 
 .letter-btn {
-    padding: 15px;
-    font-size: 20px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
+  padding: 15px;
+  font-size: 20px;
+  background-color: #3F7D58;
+  color: #EFEFEF;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
 .letter-btn:hover {
-    background-color: #45a049;
+  background-color: #365f48;
 }
 
 #question-box {
-    margin-top: 20px;
-    padding: 20px;
-    border: 1px solid #ccc;
-    background-color: #f9f9f9;
-    border-radius: 5px;
+  background-color: #EFEFEF;
+  color: #333;
+  padding: 20px;
+  border-radius: 5px;
+  text-align: left;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#question-box p {
+  margin: 10px 0;
+}
+
+#question-box #question {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+#question-box #answer {
+  font-size: 18px;
+  color: #EC5228;
+}
+
+#question-box #category {
+  font-size: 16px;
+  color: #3F7D58;
+  margin-bottom: 5px;
+}
+
+.hidden {
+  display: none;
 }
 
 /* تحسين العرض على الأجهزة المحمولة */
 @media screen and (max-width: 768px) {
-    .letter-btn {
-        font-size: 18px;
-        padding: 12px;
-    }
+  .letter-btn {
+    font-size: 18px;
+    padding: 12px;
+  }
 }
 
 @media screen and (max-width: 480px) {
-    .letter-btn {
-        font-size: 16px;
-        padding: 10px;
-    }
+  .letter-btn {
+    font-size: 16px;
+    padding: 10px;
+  }
 }
