@@ -4,6 +4,7 @@ body {
   margin: 0;
   padding: 20px;
   color: #EFEFEF;
+  text-align: center;
 }
 
 #app {
@@ -15,21 +16,13 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 15px;
   margin-bottom: 20px;
 }
 
 #logo {
-  position: absolute;
   max-height: 130px;
   max-width: 350px;
   object-fit: contain;
-}
-
-h1 {
-  font-size: 32px;
-  margin: 0;
-  font-weight: 700;
 }
 
 #letters {
@@ -63,10 +56,11 @@ h1 {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   direction: rtl;
   text-align: right;
+  margin-bottom: 15px;
 }
 
-#question-box p {
-  margin: 10px 0;
+.hidden {
+  display: none;
 }
 
 #question-box #question {
@@ -89,12 +83,14 @@ h1 {
   background: none;
   border: none;
   cursor: pointer;
-  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
 }
 
 .toggle-btn img {
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: 40px;
 }
 
 @media screen and (max-width: 768px) {
