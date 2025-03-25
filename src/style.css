@@ -24,10 +24,7 @@ body {
   /* تعديل الشعار */
 #logo {
     position: absolute;
-    left: 50%; /* للتوسيط */
-    transform: translateX(-50%); /* للتوسيط التام */
-    height: auto; /* الحفاظ على النسب */
-    max-height: 90px;
+    max-height: 50px;
 }
 
 }
