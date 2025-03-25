@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title></title>
+    <title>لعبة الحروف</title>
     <base href="/arabic-letters-game/" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -17,19 +17,19 @@
     <div id="app">
       <header id="header">
         <img id="logo" src="public/Untitled-11531.png" alt="Logo" />
-        <h1>لعبة الحروف</h1>
       </header>
 
       <div id="letters"></div>
 
       <div id="question-box">
-        <p id="category">لا يوجد</p>
-        <p id="question">اختر حرفًا لعرض السؤال...</p>
-        <p id="answer">**********</p>
-        <button id="toggle-answer" class="toggle-btn">
-          <img id="toggle-icon" src="https://img.icons8.com/ios-filled/50/000000/eye.png" alt="Toggle Answer" />
-        </button>
+        <p id="category" class="hidden">لا يوجد تصنيف</p>
+        <p id="question" class="hidden">اختر حرفًا لعرض السؤال...</p>
+        <p id="answer" class="hidden">**********</p>
       </div>
+
+      <button id="toggle-answer" class="toggle-btn hidden">
+        <img id="toggle-icon" src="public/icons8-eye-90.png" alt="Toggle Answer" />
+      </button>
     </div>
 
     <script type="module" src="src/main.js"></script>
