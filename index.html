@@ -1,28 +1,30 @@
 <!DOCTYPE html>
 <html lang="ar">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>لعبة الحروف</title>
-    <!-- إضافة Base URL لتحديد المسار الأساسي للملفات -->
-    <base href="/arabic-letters-game/"> 
-    <link rel="stylesheet" href="/src/style.css" /> <!-- تعديل مسار CSS ليشمل الجذر -->
-  </head>
-  <body>
-    <div id="app">
-      <h1>🎲 لعبة الحروف</h1>
-      
-      <!-- منطقة الأزرار -->
-      <div id="letters" style="margin-bottom: 20px;"></div>
+    <!-- إضافة مسار Base URL -->
+    <base href="/arabic-letters-game/"> <!-- تأكد أن هذا المسار صحيح -->
+    <link rel="stylesheet" href="/arabic-letters-game/src/style.css"> <!-- تعديل المسار إلى المسار الصحيح -->
+    <link rel="icon" href="/arabic-letters-game/favicon.ico"> <!-- إضافة favicon إذا كان موجودًا -->
+</head>
+<body>
 
-      <!-- عرض السؤال والجواب -->
-      <div id="question-box">
-        <p id="question">اختر حرفًا لعرض السؤال...</p>
-        <p id="answer"></p>
-      </div>
+    <div id="app">
+        <h1>🎲 لعبة الحروف</h1>
+        
+        <!-- منطقة الأزرار -->
+        <div id="letters" style="margin-bottom: 20px;"></div> 
+
+        <!-- عرض السؤال والجواب -->
+        <div id="question-box">
+            <p id="question">اختر حرفًا لعرض السؤال...</p>
+            <p id="answer"></p>
+        </div>
     </div>
 
-    <!-- تعديل مسار الـ JS ليشمل الجذر -->
-    <script type="module" src="/src/main.js"></script>
-  </body>
+    <!-- تأكد من المسار هنا أيضا -->
+    <script type="module" src="/arabic-letters-game/src/main.js"></script> <!-- تعديل المسار -->
+</body>
 </html>
