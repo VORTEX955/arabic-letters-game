@@ -23,8 +23,8 @@ body {
 /* تعديل الشعار */
 #logo {
     position: absolute;
-    max-height: 80px;  /* الحد الأقصى للارتفاع */
-    max-width: 250px;  /* الحد الأقصى للعرض */
+    max-height: 130px;  /* الحد الأقصى للارتفاع */
+    max-width: 350px;  /* الحد الأقصى للعرض */
     object-fit: contain;  /* الحفاظ على نسبة الأبعاد */
 }
 
