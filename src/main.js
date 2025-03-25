@@ -1,3 +1,4 @@
+// src/main.js
 import './style.css';
 
 const sheetUrl = 'https://api.sheetbest.com/sheets/4f4a2079-9e8a-4419-9c2c-20686bbf18e0';
@@ -60,6 +61,5 @@ function showQuestion(letter, data) {
   document.getElementById('question').innerText = `❓ السؤال: ${questionText}`;
   document.getElementById('answer').innerText = `✅ الجواب: ${answerText}`;
 }
-
 
 getData();
