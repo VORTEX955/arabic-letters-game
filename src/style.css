@@ -1,4 +1,3 @@
-/* src/style.css */
 body {
   font-family: 'Cairo', sans-serif;
   background-color: #EF9651;
@@ -20,17 +19,11 @@ body {
   margin-bottom: 20px;
 }
 
-/* تعديل الشعار */
 #logo {
-    position: absolute;
-    max-height: 130px;  /* الحد الأقصى للارتفاع */
-    max-width: 350px;  /* الحد الأقصى للعرض */
-    object-fit: contain;  /* الحفاظ على نسبة الأبعاد */
-}
-
-
-
-
+  position: absolute;
+  max-height: 130px;
+  max-width: 350px;
+  object-fit: contain;
 }
 
 h1 {
@@ -39,7 +32,6 @@ h1 {
   font-weight: 700;
 }
 
-/* منطقة الحروف */
 #letters {
   display: flex;
   flex-wrap: wrap;
@@ -63,13 +55,12 @@ h1 {
   background-color: #365f48;
 }
 
-/* قسم السؤال والإجابة */
 #question-box {
   background-color: #EFEFEF;
   color: #333;
   padding: 20px;
   border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   direction: rtl;
   text-align: right;
 }
@@ -94,7 +85,6 @@ h1 {
   margin-bottom: 5px;
 }
 
-/* زر التبديل لإخفاء/إظهار الإجابة */
 .toggle-btn {
   background: none;
   border: none;
@@ -107,7 +97,6 @@ h1 {
   height: 30px;
 }
 
-/* تحسين العرض على الأجهزة المحمولة */
 @media screen and (max-width: 768px) {
   .letter-btn {
     font-size: 18px;
