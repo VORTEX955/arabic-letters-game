@@ -20,12 +20,14 @@ body {
   margin-bottom: 20px;
 }
 
-#logo {
-  /* تعديل الشعار */
+/* تعديل الشعار */
 #logo {
     position: absolute;
-    max-height: 15px;
+    max-height: 50px;
+    max-width: 30%; /* يضمن أن الشعار ما يتجاوز عرض الشاشة */
+    object-fit: contain; /* يحافظ على نسبة العرض والارتفاع */
 }
+
 
 }
 
