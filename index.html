@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>لعبة الحروف</title>
-    <!-- تحديد Base URL لتناسب GitHub Pages -->
     <base href="/arabic-letters-game/" />
     <!-- استدعاء خط Cairo -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -13,34 +12,32 @@
       href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap"
       rel="stylesheet"
     />
-    <!-- ربط ملف CSS من مجلد src -->
     <link rel="stylesheet" href="src/style.css" />
   </head>
   <body>
     <div id="app">
-      <!-- قسم الشعار -->
       <header id="header">
-        <!-- الشعار؛ إذا لم يظهر، تأكد من صحة الرابط أو نزله وضعه في public -->
-        <img id="logo" src="https://drive.google.com/uc?export=view&id=1tOIz4ackOmQEQ28GzsmLQrwFYKzwKtIE" alt="Logo" />
-        <h1>🎲 لعبة حروف مع صبحي</h1>
+        <!-- استخدم مسار الشعار كما هو في public -->
+        <img id="logo" src="Untitled-11531.png" alt="Logo" />
+        <h1>🎲 لعبة الحروف</h1>
       </header>
-      
-      <!-- منطقة الأزرار -->
+
       <div id="letters"></div>
-      
-      <!-- قسم عرض السؤال، التصنيف والأجابة -->
+
       <div id="question-box">
         <p id="category" class="hidden"></p>
         <p id="question">اختر حرفًا لعرض السؤال...</p>
         <p id="answer"></p>
-        <!-- زر التبديل لإخفاء/إظهار الإجابة -->
         <button id="toggle-answer" class="toggle-btn" style="display:none;">
-          <img id="toggle-icon" src="https://img.icons8.com/ios-filled/50/000000/eye.png" alt="Toggle Answer" />
+          <img
+            id="toggle-icon"
+            src="https://img.icons8.com/ios-filled/50/000000/eye.png"
+            alt="Toggle Answer"
+          />
         </button>
       </div>
     </div>
-    
-    <!-- ربط ملف JS من مجلد src -->
+
     <script type="module" src="src/main.js"></script>
   </body>
 </html>
