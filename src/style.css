@@ -1,4 +1,4 @@
-/* style.css */
+/* src/style.css */
 body {
     font-family: Arial, sans-serif;
     text-align: center;
@@ -45,10 +45,6 @@ h1 {
     .letter-btn {
         font-size: 18px;
         padding: 12px;
-    }
-    #letters {
-        grid-template-columns: repeat(4, 1fr);
-        gap: 10px;
     }
 }
 
