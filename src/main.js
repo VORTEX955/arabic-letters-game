@@ -1,7 +1,5 @@
 // src/main.js
 
-// لا تقم باستيراد ملف CSS هنا لأننا ربطناه في index.html
-
 const sheetUrl = 'https://api.sheetbest.com/sheets/4f4a2079-9e8a-4419-9c2c-20686bbf18e0';
 
 // قائمة الحروف العربية
@@ -31,7 +29,7 @@ async function getData() {
       return;
     }
 
-    // إنشاء أزرار لكل حرف من الحروف
+    // إنشاء أزرار لكل حرف
     arabicLetters.forEach(letter => {
       const button = document.createElement('button');
       button.innerText = letter;
@@ -47,27 +45,25 @@ async function getData() {
 function showQuestion(letter, data) {
   // البحث عن الأسئلة التي يطابق فيها عمود "الحرف" الحرف المختار
   const questions = data.filter(item => item["الحرف"]?.trim() === letter);
-  
+
   if (questions.length === 0) {
     document.getElementById('question').innerText = `❌ لا يوجد أسئلة لهذا الحرف "${letter}"!`;
     document.getElementById('answer').innerText = "";
     document.getElementById('category').classList.add('hidden');
+    document.getElementById('toggle-answer').style.display = 'none';
     return;
   }
-  
+
   const randomQuestion = questions[Math.floor(Math.random() * questions.length)];
   console.log("🧐 البيانات المختارة:", randomQuestion);
 
-  // استخراج محتوى السؤال، الجواب والتصنيف
   const questionText = randomQuestion["السؤال"] || "🚨 خطأ: العمود غير موجود!";
   const answerText = randomQuestion["الأجابة"] || "🚨 خطأ: العمود غير موجود!";
   const categoryText = randomQuestion["التصنيف"] || "";
 
-  // عرض البيانات
   document.getElementById('question').innerText = `❓ السؤال: ${questionText}`;
   document.getElementById('answer').innerText = `✅ الجواب: ${answerText}`;
-  
-  // عرض التصنيف إذا وجد
+
   const categoryElem = document.getElementById('category');
   if (categoryText) {
     categoryElem.innerText = `📂 التصنيف: ${categoryText}`;
@@ -75,6 +71,24 @@ function showQuestion(letter, data) {
   } else {
     categoryElem.classList.add('hidden');
   }
+
+  // عرض زر التبديل لإخفاء/إظهار الإجابة
+  const toggleBtn = document.getElementById('toggle-answer');
+  const toggleIcon = document.getElementById('toggle-icon');
+  // تأكد أن الإجابة تظهر بشكل افتراضي
+  document.getElementById('answer').style.display = 'block';
+  toggleBtn.style.display = 'inline-block';
+  // اضف حدث لتبديل عرض الإجابة
+  toggleBtn.onclick = function () {
+    const answerElem = document.getElementById('answer');
+    if (answerElem.style.display === 'none') {
+      answerElem.style.display = 'block';
+      toggleIcon.src = 'https://img.icons8.com/ios-filled/50/000000/eye.png';
+    } else {
+      answerElem.style.display = 'none';
+      toggleIcon.src = 'https://img.icons8.com/ios-filled/50/000000/closed-eye.png';
+    }
+  };
 }
 
 getData();
