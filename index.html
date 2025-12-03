@@ -1,37 +1,169 @@
 <!DOCTYPE html>
-<html lang="ar">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>لعبة الحروف</title>
-    <base href="/arabic-letters-game/" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="src/style.css" />
-  </head>
-  <body>
-    <div id="app">
-      <header id="header">
-        <img id="logo" src="public/Untitled-11531.png" alt="Logo" />
-      </header>
+<html lang="ar" dir="rtl">
 
-      <div id="letters"></div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>لعبة الحروف العربية - Arabic Letters Game</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
 
-      <div id="question-box">
-        <p id="category" class="hidden">لا يوجد تصنيف</p>
-        <p id="question" class="hidden">اختر حرفًا لعرض السؤال...</p>
-        <p id="answer" class="hidden">**********</p>
+<body>
+  <!-- Animated Background -->
+  <div class="animated-bg">
+    <div class="bg-shape shape-1"></div>
+    <div class="bg-shape shape-2"></div>
+    <div class="bg-shape shape-3"></div>
+    <div class="bg-shape shape-4"></div>
+  </div>
+
+  <!-- Loading Screen -->
+  <div id="loading-screen" class="loading-screen">
+    <div class="loading-content">
+      <div class="loader-wrapper">
+        <div class="loader"></div>
+        <div class="loader-ring"></div>
       </div>
+      <h2 class="loading-title">جاري التحميل...</h2>
+      <p class="loading-subtitle">نحضر لك أفضل تجربة تعليمية</p>
+    </div>
+  </div>
 
-      <button id="toggle-answer" class="toggle-btn hidden">
-        <img id="toggle-icon" src="public/icons8-eye-90.png" alt="Toggle Answer" />
-      </button>
+  <div id="app">
+    <!-- Header -->
+    <header id="header" class="header">
+      <div class="header-content">
+        <div class="header-stats" id="header-stats">
+          <div class="stat-item">
+            <span class="stat-number" id="total-questions">0</span>
+            <span class="stat-label">سؤال</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number" id="total-letters">28</span>
+            <span class="stat-label">حرف</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Welcome Section -->
+    <section id="welcome-section" class="welcome-section">
+      <div class="welcome-content">
+        <h1 class="welcome-title">
+          <span class="title-highlight">مرحباً بك</span>
+          <span class="title-main">في لعبة الحروف العربية</span>
+        </h1>
+        <p class="welcome-description">
+          استكشف عالم الحروف العربية من خلال أسئلة ممتعة ومتنوعة
+          <br />
+          اختر حرفاً وابدأ رحلتك التعليمية الآن!
+        </p>
+        <div class="welcome-arrow">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M7 13L12 18L17 13M7 6L12 11L17 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- Letters Grid -->
+    <section class="letters-section">
+      <div class="section-header">
+        <h2 class="section-title">اختر حرفاً</h2>
+        <p class="section-subtitle">انقر على أي حرف لبدء اللعبة</p>
+      </div>
+      <div id="letters" class="letters-grid"></div>
+    </section>
+
+    <!-- Selected Letter Display -->
+    <div id="selected-letter-display" class="selected-letter-display hidden">
+      <div class="selected-letter-content">
+        <span class="selected-label">الحرف المختار</span>
+        <span id="selected-letter-text" class="selected-letter-text"></span>
+        <button class="close-selection" id="close-selection" aria-label="إغلاق">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+            <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+          </svg>
+        </button>
+      </div>
     </div>
 
-    <script type="module" src="src/main.js"></script>
-  </body>
+    <!-- Question Card -->
+    <section id="question-section" class="question-section hidden">
+      <div class="question-card">
+        <!-- Category Badge -->
+        <div id="category-badge" class="category-badge hidden">
+          <svg class="badge-icon" width="16" height="16" viewBox="0 0 24 24" fill="none">
+            <path d="M7 7H17M7 12H17M7 17H17" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+          </svg>
+          <span id="category" class="category-text"></span>
+        </div>
+
+        <!-- Question Content -->
+        <div id="question-content" class="question-content">
+          <div class="question-header">
+            <div class="question-icon-wrapper">
+              <svg class="question-icon" width="32" height="32" viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" />
+                <path d="M9.09 9A3 3 0 0 1 12 8C13.657 8 15 9.343 15 11C15 12.657 13.657 14 12 14M12 18H12.01"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+              </svg>
+            </div>
+            <h3 class="question-label">السؤال</h3>
+          </div>
+          <p id="question" class="question-text">اختر حرفاً لعرض السؤال...</p>
+        </div>
+
+        <!-- Answer Content -->
+        <div id="answer-content" class="answer-content hidden">
+          <div class="answer-header">
+            <div class="answer-icon-wrapper">
+              <svg class="answer-icon" width="32" height="32" viewBox="0 0 24 24" fill="none">
+                <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
+                <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
+                <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
+              </svg>
+            </div>
+            <h3 class="answer-label">الإجابة</h3>
+          </div>
+          <p id="answer" class="answer-text">**********</p>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="card-actions">
+          <button id="toggle-answer" class="action-btn toggle-btn hidden">
+            <svg id="toggle-icon" class="btn-icon" width="20" height="20" viewBox="0 0 24 24" fill="none">
+              <path d="M1 12S5 4 12 4S23 12 23 12S19 20 12 20S1 12 1 12Z" stroke="currentColor" stroke-width="2" />
+              <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2" />
+            </svg>
+            <span id="toggle-text" class="btn-text">إظهار الإجابة</span>
+          </button>
+          <button id="new-question-btn" class="action-btn new-question-btn hidden">
+            <svg class="btn-icon" width="20" height="20" viewBox="0 0 24 24" fill="none">
+              <path d="M3 12A9 9 0 0 1 12 3A9 9 0 0 1 21 12A9 9 0 0 1 12 21A9 9 0 0 1 3 12Z" stroke="currentColor"
+                stroke-width="2" />
+              <path d="M12 8V12L15 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+            </svg>
+            <span class="btn-text">سؤال جديد</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p class="footer-text">صُنع بـ ❤️ لتعليم الحروف العربية</p>
+      <p class="footer-note">تم إنشاء الأسئلة باستخدام نموذج ذكاء اصطناعي، قد تحتوي على بعض الأخطاء</p>
+      <p class="footer-note">جميع الحقوق محفوظة لـ <a href="https://warqtiy.com" target="_blank"
+          rel="noopener noreferrer" class="footer-link">ورقتي</a></p>
+    </footer>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+
 </html>
